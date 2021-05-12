@@ -1,0 +1,10 @@
+9321e289d80bd0a97a65216596904248  Custom_Client_base.cpp
+bfffef2bea76a330f1ac2150d3bbfef1  main.cpp
+8bfcd22353c3a57fee561ad86ee2a56b  reconf
+4c342d30608200993f582fa9faddbb87  Custom_Client.cpp
+37e55116a80b9f589550dd28b8ebff1b  configure.ac
+854a83d26171b18154aab55d1f2ce210  Makefile.am
+016797364653d2666eeb7918d63db544  Makefile.am.ide
+0f8ed4f396470ea9dbcf63b95c4ee727  Custom_Client.h
+2a77d80ef53f484747d7b731227ddf85  Custom_Client_base.h
+2b2faa5cfc83438427491f4be5d6ee59  build.sh
