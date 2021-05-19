@@ -60,22 +60,22 @@ int Custom_Client_i::serviceFunction()
                 LOG_INFO(Custom_Client_i,"connected to the server..\n");
 
 
-    for (;;) {
+    //for (;;) {
             bzero(buff, sizeof(buff));
             //printf("Enter the string : ");
            
-	    strcpy(buff, "I am Client component");
+	    strcpy(buff, "Hello, I am Client");
             //while ((buff[n++] = getchar()) != '\n');
             write(sockfd, buff, sizeof(buff));
             bzero(buff, sizeof(buff));
             read(sockfd, buff, sizeof(buff));
-            LOG_INFO(Custom_Client_i, "Data Recieved " << buff);
-            printf("From Server : %s", buff);
+            LOG_INFO(Custom_Client_i, "Data Recieved : " << buff);
+            //printf("From Server : %s", buff);
             if ((strncmp(buff, "exit", 4)) == 0) {
                     printf("Client Exit...\n");
-                    break;
+      //              break;
             }
-    }
+    //}
 
 	close(sockfd);
 	
