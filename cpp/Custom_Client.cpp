@@ -8,7 +8,7 @@
 #include <string.h>
 #include <sys/socket.h>
 #define MAX 80
-#define PORT 8080
+#define PORT 4455
 #define SA struct sockaddr
 
 
@@ -34,11 +34,10 @@ void Custom_Client_i::constructor()
 
 int Custom_Client_i::serviceFunction()
 {
-    char buff[MAX], *buf;
-    int n;
-
-	int sockfd, connfd;
-        struct sockaddr_in servaddr, cli;
+    char buff[MAX];
+ 
+	int sockfd;
+        struct sockaddr_in servaddr;
 
         sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (sockfd == -1) {
@@ -50,7 +49,7 @@ int Custom_Client_i::serviceFunction()
         bzero(&servaddr, sizeof(servaddr));
 
 	servaddr.sin_family = AF_INET;
-        servaddr.sin_addr.s_addr = inet_addr(INADDR_ANY);
+        servaddr.sin_addr.s_addr = inet_addr("172.24.85.101");
         servaddr.sin_port = htons(PORT);
 
 	if (connect(sockfd, (SA*)&servaddr, sizeof(servaddr)) != 0) {
@@ -58,19 +57,19 @@ int Custom_Client_i::serviceFunction()
                 exit(0);
         }
         else
-                printf("connected to the server..\n");
+                LOG_INFO(Custom_Client_i,"connected to the server..\n");
 
 
     for (;;) {
             bzero(buff, sizeof(buff));
             //printf("Enter the string : ");
-            n = 0;
-	    buf = "I am Client component";
+           
+	    strcpy(buff, "I am Client component");
             //while ((buff[n++] = getchar()) != '\n');
-            write(sockfd, buf, sizeof(buf));
+            write(sockfd, buff, sizeof(buff));
             bzero(buff, sizeof(buff));
             read(sockfd, buff, sizeof(buff));
-            LOG_INFO(Custom_Client_i, "Data Recieved");
+            LOG_INFO(Custom_Client_i, "Data Recieved " << buff);
             printf("From Server : %s", buff);
             if ((strncmp(buff, "exit", 4)) == 0) {
                     printf("Client Exit...\n");
