@@ -60,7 +60,7 @@ int Custom_Client_i::serviceFunction()
                 LOG_INFO(Custom_Client_i,"connected to the server..\n");
 
 
-    //for (;;) {
+    while(1) {
             bzero(buff, sizeof(buff));
             //printf("Enter the string : ");
            
@@ -73,9 +73,9 @@ int Custom_Client_i::serviceFunction()
             //printf("From Server : %s", buff);
             if ((strncmp(buff, "exit", 4)) == 0) {
                     printf("Client Exit...\n");
-      //              break;
+                    break;
             }
-    //}
+    }
 
 	close(sockfd);
 	
